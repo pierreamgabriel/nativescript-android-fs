@@ -1,0 +1,29 @@
+{
+  "name": "nativescript-android-fs",
+  "version": "1.0.0",
+  "description": "This plugin allows Android apps to work with files and folders in external/shared storage, and it's very easy to use. It works on all Android versions, including 11+.",
+  "main": "storage.android.js",
+  "nativescript": {
+	
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pierremacedo/nativescript-android-fs.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "storage",
+    "android external storage",
+    "scoped storage",
+    "android internal storage"
+  ],
+  "author": {
+	 "name": "Pierre Macedo",
+	  "email": "pierremacedodev@gmail.com"
+  },
+  "license": "GNU General Public License v3.0",
+  "bugs": {
+    "url": "https://github.com/pierremacedo/nativescript-android-fs/issues"
+  },
+  "homepage": "https://github.com/pierremacedo/nativescript-android-fs"
+}
