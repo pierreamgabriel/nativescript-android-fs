@@ -26,7 +26,7 @@ var storage = require("nativescript-android-fs");
 
 ## First instructions
 
-This plugin works by copying files to and from internal and external storage. All files you want to save inside a folder in external storage must come from your `/data/user/0/com.package.name/files `. For example, if you want to transfer "my-image.jpg" to `/Pictures`, that file must be inside your app internal storage located at `/data/user/0/com.package.name/files`. You can get the direct path to your app files directory by using this: `application.android.context.getFilesDir()`, but feel free to use any method you want, as long as it returns the right path to the files folder inside your app internal storage. When you import files to your app, they'll be saved in that folder too.
+This plugin works by copying files to and from internal and external storage. All files you want to save inside a folder in external storage must come from your `/data/user/0/com.package.name/files`. For example, if you want to transfer "my-image.jpg" to `/Pictures`, that file must be inside your app internal storage located at `/data/user/0/com.package.name/files`. You can get the direct path to your app files directory by using this: `application.android.context.getFilesDir()`, but feel free to use any method you want, as long as it returns the right path to the files folder inside your app internal storage. When you import files to your app, they'll be saved in that folder too.
 
 ## Android 11
 
@@ -63,7 +63,7 @@ Important: Don't mistake Download for Downloads because they're not the same. Th
 
 Example:
 
-```javascript
+```
 "/Documents"
 "/Documents/myfolder"
 "/Pictures"
@@ -73,11 +73,11 @@ Always begin the string with a slash "/" but don't include one at the end. If yo
 
 ### fileName
 
-When saving to external storage, it's the name of the file located in `/data/user/0/com.package.name/files `. When importing to your app's folder, it's the name of the file located in the external storage.
+When saving to external storage, it's the name of the file located in `/data/user/0/com.package.name/files`. When importing to your app's folder, it's the name of the file located in the external storage.
 
 Example:
 
-```javascript
+```
 "myfile.txt"
 "myimage.jpg"
 ```
@@ -94,7 +94,7 @@ This argument is only used in the `storage.content` function when you want to re
 
 ### storage.save
 
-It copies a file from `/data/user/0/com.package.name/files ` to external storage.
+It copies a file from `/data/user/0/com.package.name/files` to external storage.
 
 ```javascript
 storage.save(folder, fileName);
@@ -116,7 +116,7 @@ If a file with the same name already exists inside the destination folder, it'll
 
 ### storage.import
 
-It copies a file from external storage to `/data/user/0/com.package.name/files `. 
+It copies a file from external storage to `/data/user/0/com.package.name/files`. 
 
 ```javascript
 storage.import(folder, fileName);
