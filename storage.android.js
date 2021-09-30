@@ -5,6 +5,8 @@ var storage = {};
 storage.save = function (folder, fileName) {
 	
 var result;	
+var filesDir = application.android.context.getExternalFilesDir(null).getAbsolutePath();
+var storage0 = new java.io.File(filesDir.substring(0, filesDir.indexOf("/Android")));	
 var storage1 = new java.io.File("/storage/emulated/0");
 var storage2 = new java.io.File("/sdcard");	
 var input = new java.io.File(application.android.context.getFilesDir() + "/" + fileName);	
@@ -15,7 +17,11 @@ var input = new java.io.File(application.android.context.getFilesDir() + "/" + f
 		
 	} else {
 		
-		if (storage1.exists()) {
+		if (storage0.exists()) {
+			
+		process(storage0);
+			
+	} else if (storage1.exists()) {
 		
 		process(storage1);
 		
@@ -80,10 +86,16 @@ var input = new java.io.File(application.android.context.getFilesDir() + "/" + f
 
 storage.check = function (folder, fileName) {
 	
+var filesDir = application.android.context.getExternalFilesDir(null).getAbsolutePath();
+var storage0 = new java.io.File(filesDir.substring(0, filesDir.indexOf("/Android")) + folder + "/" + fileName);	
 var storage1 = new java.io.File("/storage/emulated/0" + folder + "/" + fileName);
 var storage2 = new java.io.File("/sdcard" + folder + "/" + fileName);	
 	
-	if (storage1.exists()) {
+	if (storage0.exists()) {
+		
+		return true;
+		
+	} else if (storage1.exists()) {
 		
 		return true;
 		
@@ -99,13 +111,18 @@ var storage2 = new java.io.File("/sdcard" + folder + "/" + fileName);
 }
 
 storage.import = function (folder, fileName) {
-	
+
+var filesDir = application.android.context.getExternalFilesDir(null).getAbsolutePath();
+var storage0 = new java.io.File(filesDir.substring(0, filesDir.indexOf("/Android")) + folder + "/" + fileName);	
 var storage1 = new java.io.File("/storage/emulated/0" + folder + "/" + fileName);
 var storage2 = new java.io.File("/sdcard" + folder + "/" + fileName);
 var input;	
 	
-	
-	if (storage1.exists()) {
+	if (storage0.exists()) {
+		
+		input = new java.io.FileInputStream(storage0);
+		
+	} else if (storage1.exists()) {
 		
 		input = new java.io.FileInputStream(storage1);
 		
@@ -146,16 +163,30 @@ var input;
 
 storage.create = function (folder, fileName, text) {
 	
+	var filesDir = application.android.context.getExternalFilesDir(null).getAbsolutePath();
+    var storage0 = new java.io.File(filesDir.substring(0, filesDir.indexOf("/Android")));
 	var storage1 = new java.io.File("/storage/emulated/0");
     var storage2 = new java.io.File("/sdcard");	
 	var file;
 	
-	if (text === null) {
+	if (text == null) {
 		
 		text = "";
 	}
 	
-	if (storage1.exists()) {
+	if (storage0.exists()) {
+		
+		file = new java.io.File(storage0 + folder + "/" + fileName);
+		var folder = new java.io.File(storage0 + folder); 
+
+		if (!folder.exists()) {
+            folder.mkdirs();
+            folder.setReadable(true);
+            folder.setWritable(true);
+        } 
+		
+		
+	} else if (storage1.exists()) {
 		
 		file = new java.io.File(storage1 + folder + "/" + fileName);
 		var folder = new java.io.File(storage1 + folder); 
@@ -199,12 +230,18 @@ storage.create = function (folder, fileName, text) {
 }
 
 storage.delete = function (folder, fileName) {
-	
+  
+  var filesDir = application.android.context.getExternalFilesDir(null).getAbsolutePath();
+  var storage0 = new java.io.File(filesDir.substring(0, filesDir.indexOf("/Android")) + folder + "/" + fileName);	
   var storage1 = new java.io.File("/storage/emulated/0" + folder + "/" + fileName);
   var storage2 = new java.io.File("/sdcard" + folder + "/" + fileName);	
   var file;	
 	
-	if (storage1.exists()) {
+	if (storage0.exists()) {
+		
+		file = storage0;
+		
+	} else if (storage1.exists()) {
 		
 		file = storage1;
 		
@@ -232,10 +269,16 @@ storage.content = function (type, folder) {
 
 var array = [];
 var content;
+var filesDir = application.android.context.getExternalFilesDir(null).getAbsolutePath();
+var storage0 = new java.io.File(filesDir.substring(0, filesDir.indexOf("/Android")));	
 var storage1 = new java.io.File("/storage/emulated/0");
 var storage2 = new java.io.File("/sdcard");	
 	
-	if (storage1.exists()) {
+	if (storage0.exists()) {
+			
+		content = new java.io.File(storage0 + folder).listFiles();	
+		
+		} else if (storage1.exists()) {
 			
 		content = new java.io.File(storage1 + folder).listFiles();	
 		
@@ -279,10 +322,23 @@ var storage2 = new java.io.File("/sdcard");
 
 storage.permission = function (folder, fileName) {
 	
+  var filesDir = application.android.context.getExternalFilesDir(null).getAbsolutePath();
+  var storage0 = new java.io.File(filesDir.substring(0, filesDir.indexOf("/Android")) + folder + "/" + fileName);	
   var storage1 = new java.io.File("/storage/emulated/0" + folder + "/" + fileName);
   var storage2 = new java.io.File("/sdcard" + folder + "/" + fileName);	
 	
-	if (storage1.exists()) {
+	if (storage0.exists()) {
+		
+		if (storage0.canWrite()) {
+			
+			return true;
+			
+		} else {
+			
+			return false;
+		}
+		
+	} else if (storage1.exists()) {
 		
 		if (storage1.canWrite()) {
 			
