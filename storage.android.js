@@ -150,6 +150,11 @@ storage.create = function (folder, fileName, text) {
     var storage2 = new java.io.File("/sdcard");	
 	var file;
 	
+	if (text === null) {
+		
+		text = "";
+	}
+	
 	if (storage1.exists()) {
 		
 		file = new java.io.File(storage1 + folder + "/" + fileName);
