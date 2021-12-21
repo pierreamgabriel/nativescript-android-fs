@@ -8,6 +8,7 @@ This plugin allows Android apps to work with files and folders in external/share
 - Import to app's files in internal storage
 - Check if a file exists
 - Create text files
+- Read text files
 - Delete files
 - List directories and files
 - Check permission to modify a file (Android 11)
@@ -176,6 +177,20 @@ if (file) {
 }
 ```
 
+### storage.read
+
+It returns a string with the content of a text file.
+
+```javascript
+storage.read(folder, fileName);
+```
+
+Example:
+
+```javascript
+var text = storage.read("/Documents", "my-file.txt");
+```
+
 ### storage.content
 
 It returns an array with a list of files or directories. On Android 11, you can only retrieve files created by your app.
@@ -229,10 +244,3 @@ if (file) {
     // Yes, I can work with that file.
 }
 ```
-
-## Contact me
-
-For job opportunities, you can contact me at pierremacedodev@gmail.com. For issues or feature requests, please use the plugin repository.
-
-## Donate [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=W93EHM59W7BA8)
-It's hard to keep plugins updated and bug-free without financial support. If you found this plugin useful, consider donating.

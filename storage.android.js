@@ -229,6 +229,32 @@ storage.create = function (folder, fileName, text) {
 	}
 }
 
+storage.read = function (folder, fileName) {
+	
+var filesDir = application.android.context.getExternalFilesDir(null).getAbsolutePath();
+var storage0 = new java.io.File(filesDir.substring(0, filesDir.indexOf("/Android")) + folder + "/" + fileName);	
+var storage1 = new java.io.File("/storage/emulated/0" + folder + "/" + fileName);
+var storage2 = new java.io.File("/sdcard" + folder + "/" + fileName);	
+	
+	if (storage0.exists()) {
+		
+		var read = new java.util.Scanner(storage0).useDelimiter("\\Z").next();
+		return read;
+		
+	} else if (storage1.exists()) {
+		
+		var read = new java.util.Scanner(storage1).useDelimiter("\\Z").next();
+		return read;
+		
+	} else if (storage2.exists()) {
+		
+		var read = new java.util.Scanner(storage2).useDelimiter("\\Z").next();
+		return read;
+		
+	}  
+	
+}
+
 storage.delete = function (folder, fileName) {
   
   var filesDir = application.android.context.getExternalFilesDir(null).getAbsolutePath();
