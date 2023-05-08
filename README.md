@@ -22,7 +22,7 @@ tns plugin add nativescript-android-fs
 ## Usage
 
 ```javascript
-var storage = require("nativescript-android-fs");
+let storage = require("nativescript-android-fs");
 ```
 
 ## First instructions
@@ -104,7 +104,7 @@ storage.save(folder, fileName);
 Example:
 
 ```javascript
-var file = storage.save("/Documents", "my-file.doc");
+let file = storage.save("/Documents", "my-file.doc");
 
 if (file) {
 
@@ -126,7 +126,7 @@ storage.import(folder, fileName);
 Example:
 
 ```javascript
-var file = storage.import("/Pictures", "my-picture.jpg");
+let file = storage.import("/Pictures", "my-picture.jpg");
 
 if (file) { 
 
@@ -148,7 +148,7 @@ storage.check(folder, fileName);
 Example:
 
 ```javascript
-var file = storage.check("/Download", "my-file.txt");
+let file = storage.check("/Download", "my-file.txt");
 
 if (file) {
 
@@ -168,7 +168,7 @@ storage.create(folder, fileName, text);
 Example:
 
 ```javascript
-var file = storage.create("/Documents", "new-file.txt", "Hey, this is my file!");
+let file = storage.create("/Documents", "new-file.txt", "Hey, this is my file!");
 
 if (file) {
 
@@ -188,7 +188,7 @@ storage.read(folder, fileName);
 Example:
 
 ```javascript
-var text = storage.read("/Documents", "my-file.txt");
+let text = storage.read("/Documents", "my-file.txt");
 ```
 
 ### storage.content
@@ -202,8 +202,8 @@ storage.content(type, folder);
 Example:
 
 ```javascript
-var files = storage.content("file", "/Documents");
-var directories = storage.content("directory", "/DCIM");
+let files = storage.content("file", "/Documents");
+let directories = storage.content("directory", "/DCIM");
 ```
 
 ### storage.delete
@@ -217,7 +217,7 @@ storage.delete(folder, fileName);
 Example:
 
 ```javascript
-var file = storage.delete("/Documents", "my-file.doc");
+let file = storage.delete("/Documents", "my-file.doc");
 
 if (file) {
 
@@ -237,7 +237,7 @@ storage.permission(folder, fileName);
 Example:
 
 ```javascript
-var file = storage.permission("/Documents", "my-file.doc");
+let file = storage.permission("/Documents", "my-file.doc");
 
 if (file) {
 
